@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_history.xml
+    Layout for the history screen showing past weight entries.
+    Includes a back button, headers, a RecyclerView list, and input fields.
+-->
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:padding="16dp">
+
+    <!-- Back button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonBack"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:text="@string/button_back"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        app:cornerRadius="12dp"
+        app:backgroundTint="@color/colorPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Date, weight and action headers -->
+    <TextView
+        android:id="@+id/headerDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/header_date"
+        android:textStyle="bold"
+        android:textColor="@color/colorText"
+        app:layout_constraintTop_toBottomOf="@id/buttonBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/headerWeight"
+        app:layout_goneMarginTop="8dp" />
+
+    <TextView
+        android:id="@+id/headerWeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/header_weight"
+        android:textStyle="bold"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/colorText"
+        app:layout_constraintTop_toBottomOf="@id/buttonBack"
+        app:layout_constraintStart_toEndOf="@id/headerDate"
+        app:layout_constraintEnd_toStartOf="@id/headerAction" />
+
+    <TextView
+        android:id="@+id/headerAction"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/header_action"
+        android:textStyle="bold"
+        android:textAlignment="viewEnd"
+        android:textColor="@color/colorText"
+        app:layout_constraintTop_toBottomOf="@id/buttonBack"
+        app:layout_constraintStart_toEndOf="@id/headerWeight"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Past entries -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/headerDate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/editTextDate" />
+
+    <!-- Date and weight entry -->
+    <EditText
+        android:id="@+id/editTextDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_date"
+        android:textColor="@color/colorText"
+        android:textColorHint="@color/colorSecondaryText"
+        android:backgroundTint="@color/colorPrimary"
+        android:focusable="false"
+        android:clickable="true"
+        android:inputType="none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/editTextWeight"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintWidth_percent="0.44" />
+
+    <EditText
+        android:id="@+id/editTextWeight"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_weight"
+        android:inputType="numberDecimal"
+        android:maxLength="6"
+        android:textColor="@color/colorText"
+        android:textColorHint="@color/colorSecondaryText"
+        android:backgroundTint="@color/colorPrimary"
+        app:layout_constraintStart_toEndOf="@id/editTextDate"
+        app:layout_constraintEnd_toStartOf="@id/buttonAddEntry"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintWidth_percent="0.36" />
+
+    <!-- New entry button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonAddEntry"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_add"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        app:cornerRadius="12dp"
+        app:backgroundTint="@color/buttonAdd"
+        app:layout_constraintStart_toEndOf="@id/editTextWeight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
